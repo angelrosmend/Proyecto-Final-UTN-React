@@ -20,12 +20,13 @@ class LogIn extends Component {
     handleSubmit(e) {
         e.preventDefault(); 
         console.log(this.state);
-        let email = this.state.usuario;
+        let email = this.state.email;
         let password = this.state.password;
 
         firebase.auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((data) => {
             console.log("Login")
+            localStorage.setItem('login', JSON.stringify(data.user))
             const { history } = this.props;
             history.push('/home/user/profile')
         })
@@ -65,10 +66,10 @@ class LogIn extends Component {
          <div className="input-group" > 
              <input 
              type="text" 
-             name="usuario" 
-             placeholder="Usuario" 
+             name="email" 
+             placeholder="Email" 
              ref={this.inputRef}
-             value={this.state.usuario} 
+             value={this.state.email} 
              onChange={this.handleChange}/>
 
              <input 
@@ -84,12 +85,12 @@ class LogIn extends Component {
             className="submit-btn">
             ACCEDER
             </button>
-         </div>
-     </form>
+       </div>
+      </form>
      </div>
- </div>
-  )
- }
+    </div>
+    )
+  }
 }
 
 export default withRouter(LogIn)

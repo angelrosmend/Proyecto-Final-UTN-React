@@ -37,7 +37,7 @@ class Friends extends Component {
                 <hr></hr>
             </div>
             <div className="friends-list">
-                {this.state.friends.map((doc)=> (<Friend id={doc.id} data={doc.data()}/>))}
+                {this.state.friends.map((doc)=> (<Friend key={doc.id} id={doc.id} data={doc.data()}/>))}
             </div>
         </div>
     )

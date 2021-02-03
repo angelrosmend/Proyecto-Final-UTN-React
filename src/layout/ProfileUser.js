@@ -7,6 +7,9 @@ import Friends from '../components/Friends'
 import avatar from '../img/avatar.png'
 
 function ProfileUser() {
+
+  console.log(localStorage.getItem("login"))
+
   return (
     <Fragment>
         <div className="user-profile">
